@@ -9,7 +9,7 @@
  */
 public class Bank {
 
-    public String bankName;
+    private String bankName;
 
     public Bank() {
         bankName = "Illini Bank";
@@ -29,8 +29,12 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (bankAccount.getAccountBalance() - amount != bankAccount.getAccountBalance()) {
+            bankAccount.setAccountBalanc(bankAccount.getAccountBalance() - amount);
+            return true;
+        }
+        return false;
     }
-
     /**
      * Deposit money in an account.
      * <p>
@@ -45,25 +49,33 @@ public class Bank {
         /*
          * Implement this function
          */
+        if (bankAccount.getAccountBalance() + amount != bankAccount.getAccountBalance()) {
+            bankAccount.setAccountBalanc(bankAccount.getAccountBalance() + amount);
+            return true;
+        }
+        return false;
     }
-
     /**
      * Transfer money from one account to another.
      * <p>
      * Transfer the amount of money from one back account to another. Returns true if transaction is
      * successful, false otherwise.
-     *
      * @param source bank account to transfer money from.
      * @param destination bank account to transfer money to.
      * @param amount to transfer
      * @return boolean
      */
-
     public boolean transferMoney(final BankAccount source, final BankAccount destination,
             final double amount) {
         /*
          * Implement this function
          */
+        if (source.getAccountBalance() - amount == destination.getAccountBalance() + amount) {
+            source.setAccountBalanc(source.getAccountBalance() - amount);
+            destination.setAccountBalanc(destination.getAccountBalance() + amount);
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -77,6 +89,7 @@ public class Bank {
         /*
          * Implement this function
          */
+        bankAccount.setOwnerName(name);
     }
 
     public static int totalAccounts = 0;
@@ -89,6 +102,7 @@ public class Bank {
         /*
          * Implement this function
          */
+        return totalAccounts;
     }
 
     /**
